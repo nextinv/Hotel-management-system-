@@ -74,6 +74,7 @@ $result = $conn->query("SELECT * FROM staff ORDER BY id DESC");
         <th>Salary</th>
         <th>Status</th>
         <th>Joined</th>
+        <th>Actions</th> <!-- Added Actions column -->
       </tr>
     </thead>
     <tbody>
@@ -87,6 +88,10 @@ $result = $conn->query("SELECT * FROM staff ORDER BY id DESC");
           <td>₹<?= number_format($row['salary']) ?></td>
           <td><?= $row['status'] ?></td>
           <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
+          <td>
+            <a href="edit_staff.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">✏️ Edit</a>
+            <a href="delete_staff.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this staff?')" class="btn btn-sm btn-danger">🗑 Delete</a>
+          </td>
         </tr>
       <?php endwhile; ?>
     </tbody>
