@@ -17,6 +17,8 @@ if ($result->num_rows === 1) {
     if (password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role']; // ✅ Save the user's role in session
+
         echo "success";
     } else {
         echo "❌ Incorrect password.";
